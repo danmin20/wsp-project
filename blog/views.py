@@ -10,6 +10,9 @@ def post_list(request):
     print(Post.objects)
     return render(request, 'blog/post_list.html', {'posts': posts})
 
+def movie_list(request):
+    return render(request, 'blog/movie_list.html')
+
 def post_detail(request, pk):
     print(pk)
     post = get_object_or_404(Post, pk=pk)

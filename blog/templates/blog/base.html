@@ -26,27 +26,6 @@
             </div>
         </div>
     </div>
-    <script>
-        const url = "https://yts-proxy.now.sh/list_movies.json";
-
-        fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            credentials: 'same-origin'
-        }).then((res) => {
-            return res.json()
-        }).then((json) => {
-            console.log(json.data.movies)
-            const movies = document.getElementById('movies')
-            json.data.movies.forEach((movie) => {
-                const movieCard = document.createElement('div')
-                const title = document.createTextNode(movie.title)
-                movieCard.appendChild(title)
-                movies.appendChild(movieCard)
-            })
-
-        })
-    </script>
 </body>
 
 </html>

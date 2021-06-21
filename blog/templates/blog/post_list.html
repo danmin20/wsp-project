@@ -5,6 +5,12 @@
       <h1 id="title"></h1>
       <a id="create" href=/post/new/{{ title }} class="create">+</a>
    </div>
+   {% if not posts %}
+   <div class="empty">
+      No writing has been written yet !
+      Lets write one !
+   </div>
+   {% endif %}
    {% for post in posts %}
    <div class="post">
       <a href="{% url 'post_detail' pk=post.pk %}">

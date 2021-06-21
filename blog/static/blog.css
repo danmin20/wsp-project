@@ -41,8 +41,16 @@
     text-align: center;
     animation: fadein 1.5s infinite;
     font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
 }
 
+.empty {
+    font-size: 30px;
+    margin-top: 100px;
+    text-align: center;
+    font-weight: 300;
+    white-space: pre-line;
+}
 
 .container {
     margin: 0;

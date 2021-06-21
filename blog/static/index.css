@@ -119,16 +119,13 @@ input:focus {
 }
 
 .save {
+    border: none;
+    background: none;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
     float: right;
     font-size: 18px;
     font-weight: 800;
     border-radius: 20px;
-}
-
-button {
-    border: none;
-    background: none;
-    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
 }
 
 .top-menu,
@@ -173,12 +170,32 @@ button {
     text-decoration: none;
 }
 
-.post {
+.posts .post {
     width: 100%;
     padding: 30px 50px;
     margin-top: 50px;
     box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
     border-radius: 20px;
+}
+
+.post-detail {
+    width: 100%;
+    padding: 50px 200px;
+}
+.post-detail .post {
+    width: 100%;
+}
+.post-detail h1 {
+    margin-top: 50px;
+}
+.post-detail p {
+    margin-top: 50px;
+}
+.post-detail .bottom{
+    position: fixed;
+    right: 200px;
+    top: auto;
+    bottom: 100px;
 }
 
 .post p {

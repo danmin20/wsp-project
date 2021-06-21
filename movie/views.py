@@ -11,6 +11,9 @@ def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid:
+            if(get_object_or_404(User, username=request.POST['username'])):
+                print('asdf')
+                return render(request, 'movie/signup.html', {'error': 'User information is alreay exist!'})
             user = User.objects.create_user(request.POST['username'], password = request.POST['password'])
             auth.login(request, user)
             return redirect('movie_list')

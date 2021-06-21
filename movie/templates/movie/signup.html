@@ -1,6 +1,7 @@
 {% extends 'movie/base.html' %}
 {% block content %}
 <form method="POST" class="signup">
+    <div class='alert'>{{error}}</div>
     {% csrf_token %}
     <div class="col">
         Username

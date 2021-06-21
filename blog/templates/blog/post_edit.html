@@ -1,9 +1,18 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    <h1>New post</h1>
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    <h1 id="title"></h1>
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+<script>
+    const url = window.location.href
+    const post = url.split('post/new/')[1]
+    const postTitle = post.slice(0, post.length - 1).replace(/--/g, ' ')
+
+    const title = document.getElementById('title')
+    title.innerText = postTitle
+    console.log(postTitle)
+</script>
 {% endblock %}

@@ -1,32 +1,42 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-<div class="movies">
-    <script>
-        const url = "https://yts-proxy.now.sh/list_movies.json";
+<div id="movies"></div>
 
-        fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-            credentials: 'same-origin'
-        }).then((res) => {
-            return res.json()
-        }).then((json) => {
-            console.log(json.data.movies)
-            const movies = document.getElementById('movies')
-            json.data.movies.forEach((movie) => {
-                const movieCard = document.createElement('div')
-                const title = document.createTextNode(movie.title)
-                const image = document.createElement('img')
-                image.src = movie.small_cover_image
-                movieCard.appendChild(title)
-                movieCard.appendChild(image)
-                movies.appendChild(movieCard)
+<script>
+    const url = "https://yts-proxy.now.sh/list_movies.json";
 
-                movieCard.addEventListener('click', () => {
-                    window.open(`http://127.0.0.1:8000/write/${title}`)
-                })
-            })
+    fetch(url, {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'same-origin'
+    }).then((res) => {
+        return res.json()
+    }).then((json) => {
+        console.log(json.data.movies)
+        const movies = document.getElementById('movies')
+        movies.className = 'movies'
+        const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
+
+        json.data.movies.shift()
+        json.data.movies.pop()
+        json.data.movies.forEach((movie) => {
+            const movieCard = document.createElement('a')
+            movieCard.className = "movieCard"
+
+            const title = movie.title.replace(reg, '')
+            const movieTitle = document.createElement('div')
+            movieTitle.appendChild(document.createTextNode(title))
+            movieTitle.className = "movieTitle"
+
+            movieCard.href = `/post/new/${title.replace(/ /g, '--')}`
+
+            const movieImage = document.createElement('img')
+            movieImage.className = "movieImage"
+            movieImage.src = movie.medium_cover_image
+            movieCard.appendChild(movieTitle)
+            movieCard.appendChild(movieImage)
+            movies.appendChild(movieCard)
         })
-    </script>
-</div>
+    })
+</script>
 {% endblock %}

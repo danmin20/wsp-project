@@ -43,5 +43,4 @@ def post_edit(request, pk):
 
 def post_list(request, title):
     posts = Post.objects.filter(movie_title=title)
-    print(posts)
     return render(request, 'blog/post_list.html', {'posts': posts, 'title': title})

@@ -17,8 +17,6 @@
         movies.className = 'movies'
         const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
 
-        json.data.movies.shift()
-        json.data.movies.pop()
         json.data.movies.forEach((movie) => {
             const movieCard = document.createElement('a')
             movieCard.className = "movieCard"

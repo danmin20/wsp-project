@@ -4,12 +4,6 @@ from .models import Post
 from .forms import PostForm
 from django.shortcuts import render, get_object_or_404, redirect
 
-# Create your views here.
-def post_list(request):
-    posts = Post.objects.order_by('published_date')
-    print(Post.objects)
-    return render(request, 'blog/post_list.html', {'posts': posts})
-
 def movie_list(request):
     return render(request, 'blog/movie_list.html')
 
@@ -45,3 +39,8 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
         return render(request, 'blog/post_edit.html', {'form': form})
+
+def post_list(request, title):
+    posts = get_object_or_404(Post, title=title).objects.order_by('published_date')
+    print(Post.objects)
+    return render(request, 'blog/post_list.html', {'posts': posts})

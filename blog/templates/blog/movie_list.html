@@ -26,7 +26,7 @@
             movieTitle.appendChild(document.createTextNode(title))
             movieTitle.className = "movieTitle"
 
-            movieCard.href = `/post/new/${title.replace(/ /g, '--')}`
+            movieCard.href = `/posts/${title.replace(/ /g, '--')}`
 
             const movieImage = document.createElement('img')
             movieImage.className = "movieImage"

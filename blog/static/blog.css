@@ -60,6 +60,7 @@
     justify-content: center;
     height: 100%;
 }
+
 .movies a,
 .movies a:visited,
 .movies a:active {
@@ -88,9 +89,11 @@ h4 {
     display: flex;
     justify-content: center;
 }
+
 .post-form {
     margin-top: 50px;
 }
+
 .post-form textarea,
 .post-form input {
     width: 100%;
@@ -100,25 +103,32 @@ h4 {
     font-size: 20px;
     border-radius: 20px;
 }
+
 textarea:focus,
 input:focus {
     outline: none;
 }
+
 .post-form h1 {
     text-align: center;
 }
+
 .post-form label {
     font-size: 18px;
     margin-top: 30px;
 }
+
 .save {
     float: right;
-    border: none;
-    background: none;
-    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
     font-size: 18px;
     font-weight: 800;
     border-radius: 20px;
+}
+
+button {
+    border: none;
+    background: none;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
 }
 
 .top-menu,
@@ -130,11 +140,55 @@ input:focus {
     margin-right: 20px;
 }
 
-.post {
-    margin-bottom: 70px;
+.posts {
+    width: 100%;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
 }
 
-.post h1 a,
-.post h1 a:visited {
+.posts .top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.posts .top .create {
+    margin-left: 30px;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.posts a,
+.posts a:visited {
     color: #000000;
+    text-decoration: none;
+}
+
+.post {
+    width: 100%;
+    padding: 30px 50px;
+    margin-top: 50px;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+    border-radius: 20px;
+}
+
+.post p {
+    font-size: 18px;
+}
+
+.post .date {
+    text-align: end;
+}
+
+.post .author {
+    text-align: end;
 }

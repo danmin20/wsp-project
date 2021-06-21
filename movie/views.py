@@ -6,12 +6,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 import re
 
 def movie_list(request):
-    return render(request, 'blog/movie_list.html')
+    return render(request, 'movie/movie_list.html')
 
 def post_detail(request, pk):
     print(pk)
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    return render(request, 'movie/post_detail.html', {'post': post})
 
 def post_new(request, title):
     if request.method == "POST":
@@ -25,7 +25,7 @@ def post_new(request, title):
         return redirect('post_list', title=post.movie_title)
     else:
         form = PostForm()
-        return render(request, 'blog/post_edit.html', {'form': form})
+        return render(request, 'movie/post_edit.html', {'form': form})
 
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -39,8 +39,8 @@ def post_edit(request, pk):
             return redirect('post_list', title=post.movie_title)
     else:
         form = PostForm(instance=post)
-        return render(request, 'blog/post_edit.html', {'form': form})
+        return render(request, 'movie/post_edit.html', {'form': form})
 
 def post_list(request, title):
     posts = Post.objects.filter(movie_title=title)
-    return render(request, 'blog/post_list.html', {'posts': posts, 'title': title})
+    return render(request, 'movie/post_list.html', {'posts': posts, 'title': title})

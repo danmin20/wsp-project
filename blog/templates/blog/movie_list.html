@@ -5,6 +5,12 @@
 <script>
     const url = "https://yts-proxy.now.sh/list_movies.json";
 
+    const loading = document.createElement('div')
+    loading.innerText = "Loading..."
+    const movies = document.getElementById('movies')
+    loading.className = "loading"
+    movies.appendChild(loading)
+
     fetch(url, {
         method: 'GET',
         mode: 'cors',
@@ -13,7 +19,8 @@
         return res.json()
     }).then((json) => {
         console.log(json.data.movies)
-        const movies = document.getElementById('movies')
+        movies.removeChild(loading)
+
         movies.className = 'movies'
         const reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi
 

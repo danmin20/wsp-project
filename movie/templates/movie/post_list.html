@@ -1,12 +1,10 @@
 {% extends 'movie/base.html' %}
 {% block content %}
-<div class="posts">
+<form method="POST" class="posts">
    <div id="top" class="top">
       <h1 id="title"></h1>
       {% if user.is_authenticated %}
-      <a id="create" href=/post/new/{{ title }} class="create">+</a>
-      {% else %}
-      <a id="create" href=/signup class="signup">SignUp</a>
+      <a href=/post/new/{{ title }} class="create">+</a>
       {% endif %}
    </div>
    {% if not posts %}
@@ -29,7 +27,7 @@
       </a>
    </div>
    {% endfor %}
-</div>
+</form>
 
 <script>
    const url = window.location.href

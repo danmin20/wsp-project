@@ -6,12 +6,20 @@
     <title>Hot Movies</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="{% static 'index.css' %}">
+    <link rel="stylesheet" href="{% static 'blog.css' %}">
 </head>
 
 <body>
     <div class="page-header">
         <h1><a href="/"><span class="hot">HOT </span>Movies</a></h1>
+        {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="logout btn btn-default">LogOut</button>
+        </form>
+        {% else %}
+        <a href=/signup class="logout btn btn-default">SignUp</a>
+        {% endif %}
     </div>
     <div class="content container">
         <div id="movies"></div>

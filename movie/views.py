@@ -6,6 +6,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
 
+# account
 def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
@@ -14,9 +15,17 @@ def signup(request):
             auth.login(request, user)
             return redirect('movie_list')
     else:
-        form = UserForm()
-        return render(request, 'movie/signup.html', {'form': form})
+        return render(request, 'movie/signup.html')
 
+def logout(request):
+    if request.method == "POST":
+        auth.logout(request)
+        print('as')
+        return redirect('movie_list')
+    print('df')
+    return render(request, 'movie/signup.html')
+
+# movie
 def movie_list(request):
     return render(request, 'movie/movie_list.html')
 

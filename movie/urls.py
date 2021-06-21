@@ -9,4 +9,5 @@ urlpatterns = [
   url(r'^posts/(?P<title>[\w\-]+)/$', views.post_list, name="post_list"),
   url(r'^signup/$', views.signup, name="signup"),
   url(r'^logout/$', views.logout, name="logout"),
+  url(r'^login/$', views.login, name="login"),
 ]

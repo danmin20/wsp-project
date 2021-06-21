@@ -11,7 +11,7 @@ def signup(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid:
-            user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
+            user = User.objects.create_user(request.POST['username'], password = request.POST['password'])
             auth.login(request, user)
             return redirect('movie_list')
     else:
@@ -24,6 +24,17 @@ def logout(request):
         return redirect('movie_list')
     print('df')
     return render(request, 'movie/signup.html')
+
+def login(request):
+    if request.method == "POST":
+        user = auth.authenticate(request, username = request.POST['username'], password = request.POST['password'])
+        if user is not None:
+            auth.login(request, user)
+            print('asdf')
+            return redirect('movie_list')
+        else:
+            return render(request, 'movie/login.html', {'error': 'User information does not exist!'})
+    else: return render(request, 'movie/login.html')
 
 # movie
 def movie_list(request):

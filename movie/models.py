@@ -1,6 +1,7 @@
+from django.contrib.auth.forms import UsernameField
 from django.db import models
 from django.utils import timezone
-
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)

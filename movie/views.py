@@ -1,9 +1,21 @@
 from django.shortcuts import get_list_or_404, render
 from django.utils import timezone
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, UserForm
 from django.shortcuts import render, get_object_or_404, redirect
-import re
+from django.contrib.auth.models import User
+from django.contrib import auth
+
+def signup(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid:
+            user = User.objects.create_user(request.POST['username'], password=request.POST['password'])
+            auth.login(request, user)
+            return redirect('movie_list')
+    else:
+        form = UserForm()
+        return render(request, 'movie/signup.html', {'form': form})
 
 def movie_list(request):
     return render(request, 'movie/movie_list.html')
